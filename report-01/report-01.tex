@@ -33,8 +33,8 @@
 
 \usepackage[pdftex]{hyperref}
 \hypersetup{%
-    a4paper = true,              % use A4 paper 
-    bookmarks = true,            % make bookmarks 
+    a4paper = true,              % use A4 paper
+    bookmarks = true,            % make bookmarks
     colorlinks = true,           % false: boxed links; true: colored links
     pdffitwindow = false,        % page fit to window when opened
     pdfpagemode = UseNone,       % do not show bookmarks
@@ -52,9 +52,9 @@
 \pagestyle{fancy}                % pages have headers and footers
 \fancyhead{}                     % Blank out the default header
 \fancyfoot{}                     % Blank out the default footer
-\fancyhead[LO,RE]{Exemplo de artigo em \LaTeX} % Custom header text
+\fancyhead[LO,RE]{\textit{Spotify on the rocks} - cocktails de música} % Custom header text
 \fancyhead[RO,LE]{\thepage}      % Custom header text
-\fancyfoot[RO,LE]{Grupo xx, \today} % Custom footer text
+\fancyfoot[RO,LE]{Grupo 5, \today} % Custom footer text
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
@@ -121,110 +121,149 @@ sobre os seus interesses musicais.
 
 %------------------------------------------------
 
-Música faz parte do dia a dia de milhões de pessoas, seja através de dispositivos como
-smartphones ou leitores de música portáteis, ou o habitual computador, sistema de hi-fi
-ou até televisão, é indiscutível a importância e valor que esta arte tem.
+A música está presente no quotidiano de milhões de pessoas, seja através de dispositivos
+móveis, como smartphones ou leitores de música portáteis, ou através do computador,
+sistema de hi-fi ou até televisão. É indiscutível a importância e valor que esta arte tem.
+Contudo, numa sociedade sedenta de informação, e num ecossistema como a Internet, onde a
+procura de informação é desde hobbie até ao modelo de negócio de várias empresas, é
+bastante comum, até para o casual ouvinte de música, procurar mais informação sobre o
+artista que está a ouvir, como por exemplo: letra da música, outros trabalhos do artista,
+videoclip da música, biografia da banda, etc.
+O desenvolvimento de uma aplicação, onde a música será o domínio no qual nos vamos focar,
+usando datasets disponíveis no Spotify e no SongMeanings, através da plataforma The Echo
+Nest, que permitirá aos utilizadores pesquisas mais alargadas, de forma a satisfazer as
+suas necessidades e curiosidades, aumentando a experiência para lá do sentido auditivo.
+Ao longo deste documento podem-se encontrar as seguintes secções:
+\begin{compactitem}
+  \item Estado da arte: pequena descrição daquilo que já existe no mercado, semelhante
+    ao que vai ser desenvolvido, e os aspectos diferenciadores desta aplicação;
+  \item Fontes de informação: apreciação da autoridade da fonte e da qualidade dos dados;
+  \item Estrutura da informação e datasets;
+  \item Modelo conceptual do domínio;
+  \item Tarefas de pesquisa: identificação de algumas tarefas de pesquisa a fazer sobre
+    os dados (pesquisas tipo, cenários de utilização);
+  \item Conclusões;
+  \item Referências;
+\end{compactitem}
 
 %------------------------------------------------
 
-\section{Contexto}\label{sec:application}
+\section{Estado da Arte}\label{sec:art}
+
+Actualmente, o Spotify possui os seguintes campos de pesquisa:
+\begin{compactitem}
+  \item pesquisa por artista, faixa, álbum ou ano;
+  \item pesquisa refinada por AND, OR e NOT, como por exemplo:
+    \begin{compactitem}
+      \item Zeppelin OR Floyd: lista todos os resultados com as palavras-chave “Zeppelin” ou “Floyd”;
+      \item Metallica NOT Anger: lista todas as faixas dos Metallica, excepto as que têm a palavra “Anger”;
+    \end{compactitem}
+  \item pesquisa por género musical;
+  \item pesquisa por label;
+  \item pesquisa por isrc: apresenta todas as faixas correspondentes ao ID, de acordo com o International Standard Recording Code;
+  \item pesquisa por upc: apresenta todos os álbuns correspondentes ao ID, de acordo com o Universal Product Code;
+  \item pesquisa por tag:new: lista os álbuns adicionados mais recentemente;
+  \item Referências;
+\end{compactitem}
+
+
+A aplicação Spotify on the Rocks diferencia-se relativamente à aqui descrita, na medida
+em que permite a combinação de vários campos de pesquisa, para além das acima mencionadas.
+Além disso, a aplicação integra a API do Spotify com o SongMeanings (recorrendo à plataforma
+ The Echo Nest) e com a API do Youtube, para que o utilizador possa ter lyrics e videoclipes
+associados às músicas.
+
+
+%------------------------------------------------
+
+\section{Fontes de informação}\label{sec:sources}
 
 Spotify é, atualmente, a maior plataforma musical online e é famosa pela quantidade de
-informação que possui sobre o negócio, mantendo além da informação sobre artistas, álbuns e
-respetivas faixas, possui também imensa informação bastante precisa sobre os gêneros musicais,
-origem geográfica e cronológica das obras e, limitado a quem possui uma conta (gratuita),
-informação sobre o histórico de utilizadores bem como as preferências e construções dos
-demais que constituem a comunidade virtual.
+informação que possui sobre o negócio, mantendo além da informação sobre artistas, álbuns
+e respetivas faixas, imensa informação bastante precisa sobre os géneros musicais, origem
+geográfica e cronológica das obras e, limitado a quem possui uma conta (gratuita), informação
+sobre o histórico de utilizadores, bem como as preferências e construções dos demais que
+constituem a comunidade virtual.
+
+A empresa, que é sediada em Estocolmo, assinou acordos com as gravadoras Universal Music,
+Sony BMG, EMI, Hollywood Records e Warner Music, entre outros. O serviço tinha em 15 de
+setembro de 2010 quase 10 milhões de utilizadores. Em março de 2012, tinha cerca de 3 milhões
+de utilizadores pagos. Ainda em 2012, o serviço foi premiado na décima sexta edição do Webby
+Awards, como site mais importante.
+
+O The Echo Nest é uma plataforma que agrega diferentes bases de dados de cerca de 30 milhões
+de músicas, que utiliza técni
+
+SongMeanings não é um site de lyrics como os outros: é uma comunidade de milhares de amantes
+de música, que, além de contribuiremm com lyrics, discutem e comentam sobre os significados
+e mensagens subjacentes de determinadas canções.
+Em setembro de 2011, a SongMeanings concordou com os termos da LyricFind, licenciando mais
+de um milhão de lyrics. Este acordo faz da SongMeanings uma entidade legal, entre as centenas
+de sites de letras de músicas ilegais, para além de permitir ter letras exactas.
+
+
+%------------------------------------------------
+
+\section{Estrutura de informação e \textit{datasets}}\label{sec:structure}
+
 Toda a informação do Spotify está disponível sob forma de uma Application Programming Interface
 (API) online, seguindo arquitetura REST (Representational State Transfer), oferecendo uma
 colossal fonte de informação sobre artistas, álbuns, faixas e gêneros músicais, bem como a
 recursos cronológicos sobre os trabalhos, informações geográficas dos artistas, estilos
 associados e bandas relacionadas, bem como preferências e listas de reprodução construídas
 pelos utilizadores.
-A informação proveniente das pesquisas serão guardadas pela aplicação de forma a facilitar a
-combinação com outros serviços, produzindo análises com teor analítico, facilitando o estudo
-ou a descoberta de curiosidades fruto do cruzamento de dados.
-A aplicação é responsável por recolher uma amostra de dados baseadas na informação
-introduzida pelo utilizador ou, por omissão, descrever as últimas pesquisas efetuadas.
+A informação proveniente das pesquisas serão guardadas pela aplicação de forma a facilitar
+a combinação com outros serviços, produzindo análises com teor analítico, facilitando o
+estudo ou a descoberta de curiosidades fruto do cruzamento de dados.
+A aplicação é responsável por recolher uma amostra de dados baseadas na informação introduzida
+pelo utilizador ou, por omissão, descrever as últimas pesquisas efetuadas.
 Embora a riqueza do serviço, apenas parte da API é usada para a aplicação.
 
+%------------------------------------------------
 
-%A arquitetura do visualizador assenta sobre os seguintes conceitos base \cite{kn:zpmd}:
-%\begin{compactitem}
-%\item \textbf{Componentes} --- Suspendisse auctor mattis augue \emph{push};
-%\item \textbf{Praesent} --- Sit amet sem maecenas eleifend facilisis leo;
-%\item \textbf{Pellentesque} --- Habitant morbi tristique senectus et netus.
-%\end{compactitem}
-%
-%\begin{eqnarray}
-%CIF_1: \hspace*{5mm}F_0^j(a) &=& \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(z)}{z - a} dz\\
-%CIF_2: \hspace*{5mm}F_1^j(a) &=& \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(x)}{x - a} dx \label{eq:cif}
-%\end{eqnarray}
+\section{Modelo conceptual de domínio}\label{sec:concept_model}
 
-%\subsection{Exemplo de Figura}
+%------------------------------------------------
 
-%É apresentado na Figura~\ref{fig:arch} %da página~\pageref{fig:arch}
-%um exemplo de figura flutuante que ficará onde o \LaTeX\ entender.
+\section{Tarefas de pesquisa}\label{sec:searches}
 
-%\begin{figure}
-%  \begin{center}
-%    \leavevmode
-%    \includegraphics[width=0.45\textwidth]{puzzle}
-%    \caption{Arquitetura da Solução Proposta}
-%    \label{fig:arch}
-%  \end{center}
-%\end{figure}
+Com a aplicação anteriormente descrita, pretendemos que seja possível efectuar vários
+tipos de pesquisa/operações sobre os dados que vamos utilizar, tais como:
+\begin{compactitem}
+  \item Procurar músicas por título, artista, álbum, género, país, ano ou uma combinação
+    de qualquer destes campos, por exemplos:
+    \begin{compactitem}
+      \item procurar uma música do género Blues, cujo artista seja da Inglaterra;
+      \item procurar uma música que seja um trabalho conjunto de 2 artistas;
+    \end{compactitem}
 
+  \item Obter uma lista de músicas através de combinações de pesquisas, podendo com
+    isto criar uma playlist, se o utilizador estiver autenticado, como por exemplo:
+    \begin{compactitem}
+      \item uma playlist com 10 músicas dos Metallica e dos Muse;
+      \item uma playlist com músicas portuguesas, ou com músicas portuguesas e brasileiras
+    \end{compactitem}
 
+  \item Utilizar a informação de uma música para obter a letra (lyrics) a esta associada,
+    através do SongMeanings. Para além disso, podemos apresentar as discussões feitas
+    acerca do significado dessa mesma música, uma vez que é esse o principal objectivo
+    do \textit{SongMeanings};
+  \item Tirar partido das playlists dos utilizadores, para ver quantos followers o
+    spotify tem, e representá-los geograficamente (por exemplo, através de um mapa ou
+    de um gráfico)
+  \item Obter, através de toda esta informação, uma representação gráfica de dados
+    estatísticos, como por exemplo:
+    \begin{compactitem}
+      \item número de utilizadores portugueses registados no spotify
+      \item músicas mais ouvidas ou que são mais vezes avançadas (\textit{skipped})
+      \item género musical mais apreciado pelos utilizadores
+      \item \textit{word counter} em pesquisas conjuntas, seja ao nível de faixa, album,
+        descrição, etc
+    \end{compactitem}
+\end{compactitem}
 
-% -----
-% Exemplo de tableas
-% -----
-% \subsection{Exemplo de Tabela}
-
-%É apresentado na Tabela~\ref{tab:exemplo1} um exemplo de tabela.
-
-%\begin{table}[H]
-%  \centering
-%  \caption{Uma Tabela Simples}
-%  \begin{tabular}{| l | p{45mm} |}
-%    \hline
-%    \textbf{Acrónimo} & \textbf{Significado}\\
-%    \hline
-%    \hline
-%    ADT   & \emph{Abstract Data Type}\\\hline
-%    ANDF  & \emph{Architecture-Neutral Distribution Format}\\\hline
-%    API   & \emph{Application Programming Interface}\\
-%    \hline
-%  \end{tabular}
-%  \label{tab:exemplo1}
-%\end{table}
-
-% \begin{table}
-%   \centering
-%   \caption{Tabela Exemplo}
-% \begin{tabular}{|c|r@{.}lr@{.}lr@{.}l||r|}
-% 	\hline
-% \multicolumn{8}{|c|}
-% 	{\rule[-3mm]{0mm}{8mm}Iteração $k$ de $f(x_n)$} \\
-% \textbf{\em k}
-% 	& \multicolumn{2}{c}{$x_1^k$}
-% 	& \multicolumn{2}{c}{$x_2^k$}
-% 	& \multicolumn{2}{c||}{$x_3^k$}
-% 	& comentários \\ \hline \hline
-% 0   & -0&3                 & 0&6                 &  0&7   & - \\
-% 1   &  0&47102965 & 0&04883157 & -0&53345964  & $\delta<\epsilon$ \\
-% 2   &  0&49988691 & 0&00228830 & -0&52246185  & $\delta < \varepsilon$ \\
-% 3   &  0&49999976 & 0&00005380 & -0&523656   &   $N$ \\
-% 4   &  0&5                 & 0&00000307 & -0&52359743  & \\
-% \vdots	& \multicolumn{2}{c}{\vdots}
-% 	& \multicolumn{2}{c}{$\ddots$}
-% 	& \multicolumn{2}{c||}{\vdots}  & \\
-% 7   &  0&5   & 0&0    & \textbf{-0}&\textbf{52359878}
-% 		 & $\delta<10^{-8}$ \\ \hline
-% \end{tabular}
-%   \label{tab:exemplo2}
-% \end{table}
+Consideramos que estes cenários de utilização vão ser bastante úteis, uma vez que o
+spotify não possibilita pesquisas num âmbito tão alargado.
 
 %------------------------------------------------
 
@@ -234,7 +273,7 @@ Embora a riqueza do serviço, apenas parte da API é usada para a aplicação.
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-%% auto bibliographic list 
+%% auto bibliographic list
 %\renewcommand{\bibname}{Referências}
 % uses bibtex file
 \bibliography{refs}
